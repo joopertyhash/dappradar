@@ -1,0 +1,11 @@
+app:
+  hosts:
+    123.123.123.122:
+  vars:
+    app: dappradar-monitor
+    domain: test.example.net
+    admin_email: admin@example.net
+    app_username: admin
+    app_password: 321
+    mongo_password: pass
+    git_url: https://github.com/max-block/dappradar-monitor.git

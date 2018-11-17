@@ -1,0 +1,9 @@
+/node_modules
+/.env
+/work.txt
+/tmp
+/dist
+/ansible/hosts.yml
+/ansible/app.retry
+/ansible/files
+/ansible/templates

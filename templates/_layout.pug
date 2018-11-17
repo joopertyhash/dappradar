@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
+    link(rel="stylesheet" href="/css/styles.css")
+    link(rel="shortcut icon" href="/favicon.ico")
+    title dappradar-monitor
+  body.page
+    
+    header
+      nav.teal.darken-2
+        .container
+          .nav-wrapper
+            a.brand-logo(href="/") dappradar-monitor
+            ul.right
+              li: a(href="/data1") Data1
+              li: a(href="/system-actions") System
+              
+      
+    main.container
+      block main
+      
+    footer.page-footer.grey.lighten-4.black-text
+      .container
+        p Server time: #{timestamp(new Date())}
+      
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
+    script.
+       M.AutoInit();
+    
+    

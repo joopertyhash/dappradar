@@ -1,0 +1,44 @@
+extends _layout
+
+block main
+
+  h4 System Messages
+  
+  form
+    .input-field.inline
+      input#type(type="text" name="type" value=filter.type)
+      label(for="type") Type
+    .input-field.inline
+      input#createdAt(type="text" name="createdAt" value=filter.createdAt)
+      label(for="createdAt") Created At
+    .input-field.inline
+      input#limit(type="text" name="limit" value=filter.limit || 100)
+      label(for="limit") Limit
+    .input-field.inline
+      button.btn(type="submit") Filter
+        i.material-icons.left filter_list
+        
+  
+  table.highlight
+    tr
+      th Type
+      th Count
+      th Delete
+    each s in stats
+      tr
+        td= s.type
+        td= s.count
+        td: a(href="/delete-system-message-by-type/"+s.type) delete
+          
+  br
+  br
+  table.highlight.responsive-table
+    tr
+      th Time
+      th Type
+      th View
+    each sm in systemMessages
+      tr
+        td.nowrap= timestamp(sm.createdAt)
+        td= sm.type
+        td: a(href="/view-system-message/"+sm.id) view

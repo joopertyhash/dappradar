@@ -1,0 +1,10 @@
+- hosts: app
+  gather_facts: no
+  vars_prompt:
+    - name: playbook_action
+      prompt: Action? (bootstap, install, update, drop_database, backup_database, restore_database, update_nginx)
+      private: no
+      default: update
+      
+  roles:
+    - starter-3

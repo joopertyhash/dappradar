@@ -1,0 +1,16 @@
+extends _layout
+
+block main
+
+  h4 System Actions
+  
+  .card
+    .card-action
+      a(href="/system-messages") system messages
+      a(href="/log") log file
+  
+  .collection
+    a.collection-item(href="/fetch-dapps") fetch-dapps
+    a.collection-item(href="/db-stats") db-stats
+    a.collection-item(href="/scheduler") scheduler
+    a.collection-item(href="/clean-log") clean-log
