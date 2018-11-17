@@ -9,3 +9,5 @@ app:
     app_password: 321
     mongo_password: pass
     git_url: https://github.com/max-block/dappradar-monitor.git
+    telegram_token: *******
+    telegram_chat_ids: ****,*****,****
