@@ -1,0 +1,18 @@
+extends _layout
+
+block main
+
+  h4 Notes / #{dapp.title}
+  
+  form(method="post" action="/update-notes/"+dapp.id)
+    .input-field
+      textarea#notes.materialize-textarea(name="notes" )= dapp.notes
+      label(for="notes") Notes
+    .input-field
+      button.btn(type="submit") Update Notes
+        i.material-icons.left send
+  
+    
+
+  
+    

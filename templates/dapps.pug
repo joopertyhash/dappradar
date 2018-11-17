@@ -1,0 +1,28 @@
+extends _layout
+
+block main
+
+  h4 Dapps
+  
+  table
+    tr
+      th Created At
+      th Title
+      th Category
+      th Analyzed
+      th Actions
+    each d in dapps
+      tr
+        td= timestamp(d.createdAt)
+        td: a(href=d.url)= d.title
+        td= d.category
+        td(style="color: "+(d.analyzed?"GREEN":"RED"))= d.analyzed?"YES":"NO"
+        td
+          a.dropdown-trigger.btn-flat(href="#" data-target="actions"+d.id) Actions <i class="material-icons right">arrow_drop_down</i>
+          ul.dropdown-content(id="actions"+d.id)
+            li: a(href="/notes/"+d.id) notes
+            li: a(href="/set-analyzed/"+d.id) set analyzed
+            li: a(href="/unset-analyzed/"+d.id) unset analyzed
+            li: a(href="/view-dapp/"+d.id) view
+  
+    
