@@ -1,6 +1,7 @@
 import request from "request-promise-native"
 import { Dapp } from "../models/dapp.model"
 import { DappItem } from "../types"
+import { TelegramService } from "./telegram.service"
 
 export class DappService {
   static fetchDapps = async () => {
@@ -47,6 +48,7 @@ export class DappService {
 }
 
 const upsertDapps = async (dapps: DappItem[]) => {
+  const newDapps: DappItem[] = []
   for (const d of dapps) {
     console.log({ d })
     const dapp = await Dapp.findOne({ dappId: d.dappId })
@@ -56,6 +58,14 @@ const upsertDapps = async (dapps: DappItem[]) => {
       dapp.url = d.url
     } else {
       await Dapp.create(d)
+      newDapps.push(d)
     }
+  }
+  if (newDapps.length > 0) {
+    let message = "dappradar-monitor: new dapps\n"
+    for (const d of newDapps) {
+      message += d.title + " / " + d.category + " / " + d.url + "\n"
+    }
+    await TelegramService.sendMessage(message)
   }
 }

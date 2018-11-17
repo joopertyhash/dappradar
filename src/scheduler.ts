@@ -1,6 +1,7 @@
 import { omit } from "ramda"
 import { Lock } from "semaphore-async-await"
 import { logger } from "./logger"
+import { DappService } from "./services/dapp.service"
 
 interface Job {
   name: string
@@ -15,9 +16,8 @@ const jobs: Job[] = []
 
 export class Scheduler {
   static start = () => {
-    addJob("dummyJob", 1000, async () => {
-      const wait = (ms: number) => new Promise(r => setTimeout(r, ms))
-      await wait(2000)
+    addJob("fetchDapps", 5 * 60 * 1000, async () => {
+      await DappService.fetchDapps()
     })
   }
 
